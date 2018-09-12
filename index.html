@@ -163,6 +163,8 @@
             var nama = $('#nama').val();
             if (nama.length === 0) {
                 alert('Isi Nama Tim Terlebih Dahulu!')
+            } else if (nama.length > 16) {
+                alert('Tidak Boleh Lebih Dari 16 Karakter!')
             } else {
                 addTeam(nama);
                 $('#nama').val('');
@@ -177,7 +179,7 @@
                         '<p id="nilai'+index+'" style="font-weight: bold; font-size: 150px;">0</p>'+
                         '</div>'+
                         '<div class="mt-card-content">'+
-                        '<h1 class="mt-card-name"> '+name+'</h1>'+
+                        '<h1 class="mt-card-name" style="font-size: 35px;"> '+name+'</h1>'+
                         '<div class="mt-card-social">'+
                         '<ul>'+
                         '<li>'+
