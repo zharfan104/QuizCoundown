@@ -61,6 +61,12 @@
                                 <div class="top-menu">
                                     <ul class="nav navbar-nav pull-right">
                                         <li>
+                                            <input type="text" name="" id="nama" class="form-control" placeholder="Nama Tim">
+                                        </li>
+                                        <li class="dropdown-separator">
+                                            <span class="separator"></span>
+                                        </li>
+                                        <li>
                                             <button type="button" id="tambahTim" class="btn blue">Tambah Tim</button>
                                         </li>
                                     </ul>
@@ -144,7 +150,7 @@
         <!-- END THEME LAYOUT SCRIPTS -->
     </body>
     <script>
-        var nilai = 100;
+        var nilai = 50;
         $(document).on('click', 'a[class^=tambah]', function(){
             var id = $(this).attr('id');
             addNilai(id);                              
@@ -154,19 +160,24 @@
             minusNilai(id);                              
         });
         $('#tambahTim').click(function(){
-            addTeam();
+            var nama = $('#nama').val();
+            if (nama.length === 0) {
+                alert('Isi Nama Tim Terlebih Dahulu!')
+            } else {
+                addTeam(nama);
+                $('#nama').val('');
+            }
         });
         var index = 0;
         
-        function addTeam() {
-            var nomorTim = index+1;
+        function addTeam(name) {
             var card = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
                         '<div class="mt-card-item">'+
                         '<div class="mt-card-avatar mt-overlay-1">'+
                         '<p id="nilai'+index+'" style="font-weight: bold; font-size: 150px;">0</p>'+
                         '</div>'+
                         '<div class="mt-card-content">'+
-                        '<h1 class="mt-card-name"> Tim '+nomorTim+'</h1>'+
+                        '<h1 class="mt-card-name"> '+name+'</h1>'+
                         '<div class="mt-card-social">'+
                         '<ul>'+
                         '<li>'+
