@@ -162,9 +162,11 @@
         $('#tambahTim').click(function(){
             var nama = $('#nama').val();
             if (nama.length === 0) {
-                alert('Isi Nama Tim Terlebih Dahulu!')
+                alert('Isi Nama Tim Terlebih Dahulu!');
+                return false;
             } else if (nama.length > 16) {
-                alert('Tidak Boleh Lebih Dari 16 Karakter!')
+                alert('Tidak Boleh Lebih Dari 16 Karakter!');
+                return false;
             } else {
                 addTeam(nama);
                 $('#nama').val('');
