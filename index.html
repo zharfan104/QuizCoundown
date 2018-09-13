@@ -159,6 +159,10 @@
             var id = $(this).attr('id');
             minusNilai(id);                              
         });
+        $(document).on('click', 'a[class^=hapus]', function () {
+            var id = $(this).attr('id');
+            hapusKartu(id);
+        });
         $('#tambahTim').click(function(){
             var nama = $('#nama').val();
             if (nama.length === 0) {
@@ -175,7 +179,7 @@
         var index = 0;
         
         function addTeam(name) {
-            var card = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+            var card = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="kartu' + index +'">'+
                         '<div class="mt-card-item">'+
                         '<div class="mt-card-avatar mt-overlay-1">'+
                         '<p id="nilai'+index+'" style="font-weight: bold; font-size: 150px;">0</p>'+
@@ -185,15 +189,20 @@
                         '<div class="mt-card-social">'+
                         '<ul>'+
                         '<li>'+
-                        '<a href="javascript:;" id="tambahNilai'+index+'" class="tambah">'+
+                        '<a href="javascript:;" id="tambahNilai'+index+'" class="tambah" title="Tambah Nilai">'+
                         '<i class="glyphicon glyphicon-plus"></i>'+
                         '</a>'+
                         '</li>'+
                         '<li>'+
-                        '<a href="javascript:;" id="kurangiNilai'+index+'" class="kurang">'+
+                        '<a href="javascript:;" id="kurangiNilai'+index+'" class="kurang" title="Kurangi Nilai">'+
                         '<i class="glyphicon glyphicon-minus"></i>'+
                         '</a>'+
                         '</li>'+
+                        '<li>' +
+                        '<a href="javascript:;" id="hapusCard' + index + '" class="hapus" title="Hapus Kartu">' +
+                        '<i class="glyphicon glyphicon-remove"></i>' +
+                        '</a>' +
+                        '</li>' +
                         '</ul>'+
                         '</div>'+
                         '</div>'+
@@ -201,6 +210,11 @@
                         '</div>';
                         index++;
             $('#portlet-wrapper').append(card);
+        }
+
+        function hapusKartu(id) {
+            var index = id.substr(9);
+            $('#kartu' + index + '').remove();
         }
         
         function addNilai(id) {
