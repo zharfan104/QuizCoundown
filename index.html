@@ -34,10 +34,14 @@
         <link rel="icon" href="assets/global/img/logo.png" type="image/png">
         <style>
         .clock {
-            font-size: 25px;
+            font-size: 45px;
             font-family: Orbitron;
             font-weight: bold;
             letter-spacing: 7px;
+        }
+        .mt-element-card .mt-card-item{
+            border-radius: 25px;
+            border: 5px solid #73AD21;
         }
         </style> 
     </head>
@@ -54,9 +58,9 @@
                             <div class="container">
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
-                                    <a href="index.html">
-                                        <h1>Scoreboard</h1>
-                                    </a>
+                                    <!-- <a href="index.html"> -->
+                                        <h1 id="MyClockDisplay" class="clock">Scoreboard</h1>
+                                    <!-- </a> -->
                                 </div>
                                 <!-- END LOGO -->
                                 <div class="top-menu">
@@ -69,6 +73,7 @@
                                         </li>
                                         <li>
                                             <button type="button" id="tambahTim" class="btn blue">Tambah Tim</button>
+                                            <div id="MyClockDisplay" class="clock"></div>
                                         </li>
                                     </ul>
                                 </div>
@@ -94,21 +99,8 @@
                                         <!-- BEGIN : USER CARDS -->
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="portlet light portlet-fit ">
-                                                    <div class="portlet-title">
-                                                        <div class="caption">
-                                                            <i class=" icon-layers font-green"></i>
-                                                            <span class="caption-subject font-green bold uppercase">Quiz</span>
-                                                        </div>
-                                                        <div class="actions">
-                                                            <div id="MyClockDisplay" class="clock"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="portlet-body">
-                                                        <div class="mt-element-card mt-element-overlay">
-                                                            <div class="row" id="portlet-wrapper">
-                                                            </div>
-                                                        </div>
+                                                <div class="mt-element-card mt-element-overlay">
+                                                    <div class="row" id="portlet-wrapper">
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,7 +165,7 @@
                 alert('Tidak Boleh Lebih Dari 16 Karakter!');
                 return false;
             } else {
-                addTeam(nama);
+                addTeam(nama.toUpperCase());
                 $('#nama').val('');
             }
         });
@@ -196,7 +188,7 @@
                         '</li>'+
                         '<li>'+
                         '<a href="javascript:;" id="kurangiNilai'+index+'" class="kurang" title="Kurangi Nilai">'+
-                        '<i class="glyphicon glyphicon-minus"></i>'+
+                        '<i class="glyphicon glyphicon-minus" style="color:red"></i>'+
                         '</a>'+
                         '</li>'+
                         '<li>' +
