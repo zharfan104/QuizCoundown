@@ -227,7 +227,7 @@
         function minusNilai(id) {
             var index = id.substr(12);
             var curNilai = $('#nilai'+index+'').text();
-            var nilaiKurang = parseInt(curNilai) - nilai;
+            var nilaiKurang = parseInt(curNilai) - 50;
             $('#nilai'+index+'').text(nilaiKurang);
             if (nilaiKurang > 0) {
                 $('#nilai' + index + '').css('color', 'green');
